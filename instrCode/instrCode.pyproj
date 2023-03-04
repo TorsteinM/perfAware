@@ -22,7 +22,6 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="instrCode.py" />
     <Compile Include="sim8086.py">
       <SubType>Code</SubType>
     </Compile>

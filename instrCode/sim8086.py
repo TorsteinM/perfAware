@@ -17,11 +17,13 @@ ofile.write(f'\nbits {encoding}\n\n')
 
 with open(ifDir +'\\'+ ifName, 'rb') as f:
     while (byte := f.read( length )):
+        
         code = int.from_bytes(byte,"big")
+        
         left = code >> 8
 
         ## Handle warnings/something is wrong.
-        if(code & 192 != 192):   ## Only MOD == 11, Register mode implemented
+        if(code & 192 != 192):   ## Only register mode(MOD=11) implemented
             print("Not implemented.")
             break
 
@@ -33,4 +35,4 @@ with open(ifDir +'\\'+ ifName, 'rb') as f:
         ## Execute instruction 
         ofile.write(f'{bitsToMnemonic[left & 252]} {(dest,source)[left & 2]}, {(source,dest)[left & 2]}\n')
         
-        print(f'{bitsToMnemonic[left & 252]} {(dest,source)[left & 2]}, {(source,dest)[left & 2]}\n', end='')
+        #print(f'{bitsToMnemonic[left & 252]} {(dest,source)[left & 2]}, {(source,dest)[left & 2]}\n', end='')
